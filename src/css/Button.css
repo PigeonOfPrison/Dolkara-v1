@@ -1,0 +1,158 @@
+@import './variables.css';
+
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-weight: var(--font-weight-medium);
+  
+  transition: all var(--transition-normal);
+  
+  /* Remove default button styles */
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* Icon styling */
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Sizes */
+.btn-small {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-small);
+  min-height: var(--btn-small-height);
+}
+
+.btn-medium {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-body);
+  min-height: var(--btn-medium-height);
+}
+
+.btn-large {
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-h2);
+  min-height: var(--btn-large-height);
+}
+
+/* Icon-only buttons (square) */
+.btn-icon-only.btn-small {
+  padding: var(--spacing-xs);
+  width: var(--btn-small-height);
+  height: var(--btn-small-height);
+}
+
+.btn-icon-only.btn-medium {
+  padding: var(--spacing-sm);
+  width: var(--btn-medium-height);
+  height: var(--btn-medium-height);
+}
+
+.btn-icon-only.btn-large {
+  padding: var(--spacing-md);
+  width: var(--btn-large-height);
+  height: var(--btn-large-height);
+}
+
+/* Variants */
+
+/* Primary - Main actions */
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-primary:active:not(:disabled) {
+  background: var(--color-primary-active);
+  box-shadow: 0 2px 6px rgba(74, 144, 226, 0.2);
+}
+
+/* Secondary - Less important actions */
+.btn-secondary {
+  background: var(--bg-inspector);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-normal);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--color-border-hover);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-hover);
+}
+
+.btn-secondary:active:not(:disabled) {
+  background: var(--color-border-normal);
+}
+
+/* Danger - Destructive actions */
+.btn-danger {
+  background: var(--color-danger);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #C0392B;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.btn-danger:active:not(:disabled) {
+  background: #A93226;
+}
+
+/* Icon - Minimal style for icon buttons */
+.btn-icon {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid transparent;
+}
+
+.btn-icon:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-normal);
+}
+
+.btn-icon:active:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+}

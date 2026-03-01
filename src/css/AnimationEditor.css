@@ -1,0 +1,195 @@
+.animation-editor {
+  display: flex;
+  height: 100%;
+  gap: var(--spacing-lg);
+  padding: 2px var(--spacing-lg) var(--spacing-lg) 2px; /* top 2px, right/bottom from variables, left 2px */
+  overflow: hidden;
+}
+
+.animation-editor-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Left Panel - Animation List */
+.animation-list {
+  flex: 0 0 var(--animation-list-width,200px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  overflow-y: auto;
+  padding: 2px 4px 0 2px; /* small paddings retained */
+}
+
+.animation-list-item {
+  border: 1px solid var(--color-border-normal);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-normal);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.15rem;
+  cursor: pointer;
+}
+
+.animation-list-item:hover {
+  border-color: var(--color-primary);
+  background: var(--bg-tertiary);
+}
+
+.animation-list-item.selected {
+  border-color: var(--color-primary);
+  background: rgba(74, 144, 226, 0.15);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+  border-width: 2px;
+  font-weight: 700;
+}
+
+.animation-name {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-small);
+  flex: 1;
+}
+
+.loop-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--font-size-small);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.loop-checkbox input[type="checkbox"] {
+  cursor: pointer;
+}
+
+/* Right Panel - Frame Slots */
+.animation-frames {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.animation-frames-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+}
+
+.frame-slots {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: 7px var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.frame-slot {
+  flex-shrink: 0;
+  width: var(--frame-slot-width,130px);
+  height: var(--frame-slot-height,152px);
+  border: 2px dashed var(--color-border-normal);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0;
+  transition: all var(--transition-normal);
+  background: var(--bg-secondary);
+}
+
+.frame-slot.add-new {
+  cursor: pointer;
+  border-style: dashed;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame-slot.add-new:hover {
+  border-color: var(--color-primary);
+  background: rgba(74, 144, 226, 0.05);
+}
+
+.frame-slot.filled {
+  border-style: solid;
+  border-color: var(--color-border-normal);
+  padding: 0;
+}
+
+.frame-slot.filled:hover {
+  border-color: var(--color-border-hover);
+}
+
+.frame-slot.filled.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.4);
+  border-width: 2px;
+}
+
+.frame-slot canvas {
+  width: 100%;
+  height: var(--frame-canvas-height,120px);
+  image-rendering: pixelated;
+  border: none;
+  border-radius: 0;
+  display: block;
+}
+
+.plus-icon {
+  font-size: var(--icon-xlarge);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-normal);
+}
+
+.frame-slot.add-new:hover .plus-icon {
+  color: var(--color-primary);
+}
+
+.frame-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  width: 100%;
+  border-top: 1px solid var(--color-border-normal);
+}
+
+.frame-actions button {
+  padding: var(--spacing-sm);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-small-height);
+}
+
+.frame-actions button:first-child {
+  border-right: 1px solid var(--color-border-normal);
+}
+
+.frame-actions button:hover {
+  background: var(--color-border-hover);
+  color: var(--color-text-primary);
+}

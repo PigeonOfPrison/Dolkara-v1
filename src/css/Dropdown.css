@@ -1,0 +1,189 @@
+@import './variables.css';
+
+/* ============================================
+   Dropdown Component
+   ============================================ */
+
+.dropdown {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* Label */
+.dropdown-label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+/* Trigger Button */
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--input-height);
+  padding: 0 6px;
+  background: var(--bg-sidebar);
+  border: 1px solid var(--color-border-normal);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: left;
+}
+
+.dropdown-trigger:hover:not(:disabled) {
+  border-color: var(--color-border-hover);
+}
+
+.dropdown-trigger:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
+}
+
+.dropdown-trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--color-border-normal);
+  color: var(--color-text-disabled);
+}
+
+/* Value text */
+.dropdown-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--font-size-body);
+}
+
+.dropdown-placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Chevron icon */
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: var(--spacing-sm);
+  color: var(--color-text-muted);
+  transition: transform var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.dropdown-open .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  background: var(--bg-sidebar);
+  border: 1px solid var(--color-border-normal);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-medium);
+  
+  max-height: 240px;
+  overflow-y: auto;
+  
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-xs) 0;
+  
+  animation: dropdownFadeIn var(--transition-fast) ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Option Items */
+.dropdown-option {
+  height: var(--input-height);
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-primary);
+}
+
+.dropdown-option-selected {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.dropdown-option-selected:hover {
+  background: rgba(74, 144, 226, 0.2);
+}
+
+/* Size Variants */
+.dropdown-small .dropdown-trigger {
+  min-height: var(--btn-small-height);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-small);
+}
+
+.dropdown-medium .dropdown-trigger {
+  min-height: var(--input-height);
+}
+
+/* Scrollbar for dropdown menu */
+.dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--color-border-normal);
+  border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+/* Disabled state */
+.dropdown-disabled .dropdown-trigger {
+  background: var(--color-border-normal);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.dropdown-disabled .dropdown-icon {
+  color: var(--color-text-disabled);
+}

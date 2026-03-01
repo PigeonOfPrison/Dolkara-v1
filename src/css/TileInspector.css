@@ -1,0 +1,91 @@
+@import './variables.css';
+
+/* ============================================
+   Tile Inspector Panel
+   ============================================ */
+
+.tile-inspector-container {
+  padding: var(--spacing-md);
+  overflow: auto;
+  height: 100%;
+}
+
+/* No Tile Selected State */
+.tile-inspector-empty {
+  padding: var(--spacing-lg);
+  color: var(--color-text-muted);
+}
+
+.tile-inspector-empty p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.tile-inspector-empty p:last-child {
+  font-size: var(--font-size-small);
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+}
+
+/* Section Titles */
+.tile-inspector-section-title {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border-normal);
+}
+
+.tile-inspector-section-title:first-child {
+  margin-top: 0;
+}
+
+/* Unity-Style Row Layout: Label (100px) + Input (flexible) */
+.tile-inspector-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tile-inspector-row-label {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+/* Constrain inputs within tile-inspector-row */
+.tile-inspector-row input[type="text"],
+.tile-inspector-row input[type="number"],
+.tile-inspector-row input[type="checkbox"] {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Checkbox special styling */
+.tile-inspector-row input[type="checkbox"] {
+  width: auto;
+  justify-self: start;
+}
+
+/* Edit Button Full Width */
+.tile-inspector-edit-button {
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Disabled palette overlay */
+.tile-inspector-palette-disabled {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.tile-inspector-palette-hint {
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-xs);
+  font-style: italic;
+}

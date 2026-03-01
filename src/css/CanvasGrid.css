@@ -1,0 +1,52 @@
+@import './variables.css';
+
+/* ============================================
+   Canvas Grid Component
+   ============================================ */
+
+.canvas-grid-container {
+  width: 100%;
+  height: 100%;
+  background: var(--bg-canvas);
+  position: relative;
+  overflow: auto; /* Changed from hidden to auto for scrolling */
+  padding: var(--spacing-none);
+  margin: var(--spacing-none);
+}
+
+.canvas-grid {
+  display: block;
+  /* Remove width/height 100% - let canvas use its natural size */
+  cursor: crosshair;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  padding: var(--spacing-none);
+  margin: var(--spacing-none);
+}
+
+.canvas-grid:active {
+  cursor: pointer;
+}
+
+/* Scrollbar styling for canvas container */
+.canvas-grid-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.canvas-grid-container::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+
+.canvas-grid-container::-webkit-scrollbar-thumb {
+  background: var(--color-border-normal);
+  border-radius: 0px;
+}
+
+.canvas-grid-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+.canvas-grid-container::-webkit-scrollbar-corner {
+  background: var(--bg-canvas);
+}

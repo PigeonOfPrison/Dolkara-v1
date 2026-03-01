@@ -1,0 +1,265 @@
+/* ============================================
+   SplashScreen - Full-screen intro overlay
+   ============================================ */
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1E2128 0%, #252A31 50%, #2B2F38 100%);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: opacity 1.5s ease;
+}
+
+.splash-screen--fading {
+  opacity: 0;
+}
+
+/* ── Full-screen background grid ── */
+.splash-bg-grid {
+  position: fixed;
+  inset: 0;
+  --cell-size: 40px;
+  --grid-color: rgba(74, 144, 226, 0.07);
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--cell-size) var(--cell-size);
+  opacity: 1;
+}
+
+@keyframes splash-fade-in-plain {
+  to { opacity: 1; }
+}
+
+/* ── Ambient center glow ── */
+.splash-glow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(74, 144, 226, 0.09) 0%, transparent 68%);
+  animation: splash-fade-in-plain 1.2s ease-out 0.5s forwards;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Corner brackets ── */
+.splash-corner {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+}
+
+.splash-corner--tl {
+  top: 22px;
+  left: 22px;
+  border-top: 1.5px solid rgba(74, 144, 226, 0.55);
+  border-left: 1.5px solid rgba(74, 144, 226, 0.55);
+  animation: splash-fade-in 0.5s ease-out 0.1s forwards;
+}
+
+.splash-corner--tr {
+  top: 22px;
+  right: 22px;
+  border-top: 1.5px solid rgba(74, 144, 226, 0.55);
+  border-right: 1.5px solid rgba(74, 144, 226, 0.55);
+  animation: splash-fade-in 0.5s ease-out 0.2s forwards;
+}
+
+.splash-corner--bl {
+  bottom: 22px;
+  left: 22px;
+  border-bottom: 1.5px solid rgba(74, 144, 226, 0.55);
+  border-left: 1.5px solid rgba(74, 144, 226, 0.55);
+  animation: splash-fade-in 0.5s ease-out 0.3s forwards;
+}
+
+.splash-corner--br {
+  bottom: 22px;
+  right: 22px;
+  border-bottom: 1.5px solid rgba(74, 144, 226, 0.55);
+  border-right: 1.5px solid rgba(74, 144, 226, 0.55);
+  animation: splash-fade-in 0.5s ease-out 0.4s forwards;
+}
+
+/* ── Top / bottom edge bars ── */
+.splash-top-bar,
+.splash-bottom-bar {
+  position: fixed;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  animation: splash-fade-in 0.7s ease-out 0.5s forwards;
+}
+
+.splash-top-bar {
+  top: 22px;
+  border-top: 1px solid rgba(74, 144, 226, 0.18);
+  padding-top: 8px;
+}
+
+.splash-bottom-bar {
+  bottom: 22px;
+  border-bottom: 1px solid rgba(74, 144, 226, 0.18);
+  padding-bottom: 8px;
+}
+
+.splash-bar-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(74, 144, 226, 0.45);
+}
+
+/* ── Scan line ── */
+.splash-scan-line {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(74, 144, 226, 0.0) 10%,
+    rgba(74, 144, 226, 0.7) 40%,
+    rgba(74, 144, 226, 0.7) 60%,
+    rgba(74, 144, 226, 0.0) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
+  animation: splash-scan 2.2s cubic-bezier(0.4, 0, 0.6, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes splash-scan {
+  0%   { top: 0vh;   opacity: 0; }
+  4%   { opacity: 1; }
+  96%  { opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
+
+/* ── Centered content ── */
+.splash-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.splash-content--fading {
+  animation: splash-fade-out-content 0.8s ease-out forwards;
+}
+
+@keyframes splash-fade-out-content {
+  to {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+/* ── Logo box ── */
+.splash-logo-box {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid rgba(74, 144, 226, 0.35);
+  background: rgba(74, 144, 226, 0.04);
+  box-shadow:
+    0 0 32px rgba(74, 144, 226, 0.08),
+    inset 0 0 32px rgba(74, 144, 226, 0.04);
+  margin-bottom: 24px;
+  animation: splash-fade-in-scale 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes splash-fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.splash-logo-letter {
+  font-size: 72px;
+  font-weight: 700;
+  color: #4A90E2;
+  text-shadow:
+    0 0 24px rgba(74, 144, 226, 0.6),
+    0 0 48px rgba(74, 144, 226, 0.2);
+  line-height: 1;
+}
+
+/* ── App name ── */
+.splash-app-name {
+  font-size: 34px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  animation: splash-fade-in 0.7s ease-out 0.5s forwards;
+  opacity: 0;
+  margin-bottom: 16px;
+}
+
+/* ── Separator ── */
+.splash-separator {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(74, 144, 226, 0.5) 30%,
+    rgba(74, 144, 226, 0.5) 70%,
+    transparent
+  );
+  animation: splash-fade-in 0.7s ease-out 0.8s forwards;
+  opacity: 0;
+  margin-bottom: 16px;
+}
+
+/* ── Slogan ── */
+.splash-slogan {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  animation: splash-fade-in 0.7s ease-out 1.0s forwards;
+  opacity: 0;
+}
+
+.splash-slogan span {
+  color: rgba(74, 144, 226, 0.75);
+}
+
+/* ── Shared keyframes ── */
+@keyframes splash-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,301 @@
+/* ============================================
+   Dolkaraa Editor - Global Base Styles
+   ============================================
+   Import variables.css FIRST, then global styles
+   ============================================ */
+
+@import './variables.css';
+
+/* ============================================
+   HTML & BODY RESETS
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 13px;  /* Base font size for entire app */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  overflow: hidden;  /* Prevent body scroll, let panels handle it */
+  
+  /* Font rendering optimization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.app-fade-in {
+  width: 100%;
+  height: 100%;
+  animation: app-fade-in 1.2s ease-out forwards;
+}
+
+@keyframes app-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================
+   HEADINGS
+   ============================================ */
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+h3, h4, h5, h6 {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+a:active {
+  color: var(--color-primary-active);
+}
+
+/* ============================================
+   BUTTON RESETS
+   ============================================ */
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ============================================
+   INPUT FIELD RESETS & STYLES
+   ============================================ */
+
+input,
+textarea,
+select {
+  font-family: var(--font-ui);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  background-color: var(--bg-sidebar);
+  border: 1px solid var(--color-border-normal);
+  border-radius: var(--radius-sm);
+  padding: var(--input-padding);
+  transition: border-color var(--transition-normal), 
+              box-shadow var(--transition-normal);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: var(--color-border-normal);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+input::placeholder {
+  color: var(--color-text-muted);
+}
+
+textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   SELECT DROPDOWN STYLING
+   ============================================ */
+
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+/* ============================================
+   SCROLLBARS (Webkit browsers)
+   Matches canvas scrollbar style
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-normal);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-border-focus);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ============================================
+   CODE & MONOSPACE TEXT
+   ============================================ */
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-mono);
+  color: var(--color-text-secondary);
+  background-color: var(--bg-sidebar);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* ============================================
+   PARAGRAPHS & TEXT BLOCKS
+   ============================================ */
+
+p {
+  margin: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   FOCUS VISIBLE (Accessibility)
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SELECTION COLOR
+   ============================================ */
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ============================================
+   UTILITY: Text truncation
+   ============================================ */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.truncate-lines-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   UTILITY: Flex helpers
+   ============================================ */
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

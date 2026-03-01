@@ -1,0 +1,80 @@
+@import './variables.css';
+
+/* ============================================
+   Preview Card Component Styles
+   Used by TileSet, CollectibleSet, CharacterSet
+   ============================================ */
+
+/* Base card styles */
+.tile-card,
+.collectible-card,
+.character-card {
+  width: 100%;
+  aspect-ratio: 1;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tile-card canvas,
+.collectible-card canvas,
+.character-card canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.tile-card:hover,
+.collectible-card:hover,
+.character-card:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.tile-card.active,
+.collectible-card.active,
+.character-card.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-hover);
+}
+
+/* Legacy support for old class names */
+.characterset-card {
+  width: 100%;
+  aspect-ratio: 1;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.characterset-card canvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.characterset-card:hover {
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.characterset-card.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-hover);
+}

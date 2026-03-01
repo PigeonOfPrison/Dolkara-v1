@@ -1,0 +1,79 @@
+@import './variables.css';
+
+/* ============================================
+   Scene Inspector Panel
+   ============================================ */
+
+.scene-inspector-container {
+  padding: var(--spacing-md);
+  overflow: auto;
+  height: 100%;
+}
+
+/* No Scene Selected State */
+.scene-inspector-empty {
+  padding: var(--spacing-lg);
+  color: var(--color-text-muted);
+}
+
+.scene-inspector-empty p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.scene-inspector-empty p:last-child {
+  font-size: var(--font-size-small);
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+}
+
+/* Section Titles */
+.scene-inspector-section-title {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border-normal);
+}
+
+.scene-inspector-section-title:first-child {
+  margin-top: 0;
+}
+
+/* Unity-Style Row Layout: Label (100px) + Input (flexible) */
+.inspector-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.inspector-row-label {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+/* Constrain inputs within inspector-row */
+.inspector-row input[type="text"],
+.inspector-row input[type="number"],
+.inspector-row select {
+  width: 100%;
+  min-width: 0; /* Allows input to shrink below content size */
+}
+
+/* Palette Grid Section */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Add Button Full Width */
+.inspector-add-button {
+  width: 100%;
+  margin-top: var(--spacing-xs);
+}

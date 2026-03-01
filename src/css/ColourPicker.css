@@ -1,0 +1,237 @@
+@import './variables.css';
+
+/* ============================================
+   Colour Picker Component
+   ============================================ */
+
+.colour-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+/* ============================================
+   PALETTE GRID (uses SelectionGrid component)
+   ============================================ */
+
+.colour-picker-palette {
+  /* SelectionGrid handles the grid layout */
+  /* Custom styles for colour picker variant */
+}
+
+/* Color Swatch Inner Content */
+.colour-swatch-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Selected indicator (small dot in corner) */
+.colour-swatch-indicator {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-text-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* ============================================
+   RGB EDITOR
+   ============================================ */
+
+.colour-editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: var(--bg-sidebar);
+  border: 1px solid var(--color-border-normal);
+  border-radius: var(--radius-sm);
+}
+
+/* Editor Header */
+.colour-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.colour-editor-title {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.colour-editor-preview {
+  width: 32px;
+  height: 20px;
+  border: 1px solid var(--color-border-normal);
+  border-radius: var(--radius-sm);
+}
+
+/* RGB Channels */
+.colour-editor-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.colour-channel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.colour-channel label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  min-width: 12px;
+  text-align: center;
+}
+
+/* Range Sliders */
+.colour-slider {
+  flex: 1;
+  height: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Webkit (Chrome, Safari, Edge) */
+.colour-slider::-webkit-slider-track {
+  height: 4px;
+  background: var(--color-border-normal);
+  border-radius: 2px;
+}
+
+.colour-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--color-text-primary);
+  border: 1px solid var(--color-border-normal);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.colour-slider::-webkit-slider-thumb:hover {
+  background: var(--color-text-primary);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Firefox */
+.colour-slider::-moz-range-track {
+  height: 4px;
+  background: var(--color-border-normal);
+  border-radius: 2px;
+}
+
+.colour-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--color-text-primary);
+  border: 1px solid var(--color-border-normal);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.colour-slider::-moz-range-thumb:hover {
+  background: var(--color-text-primary);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+/* Red slider - subtle red tint on track */
+.colour-slider-red::-webkit-slider-track {
+  background: linear-gradient(to right, #2D2D2D, rgba(231, 76, 60, 0.3));
+}
+
+.colour-slider-red::-moz-range-track {
+  background: linear-gradient(to right, #2D2D2D, rgba(231, 76, 60, 0.3));
+}
+
+/* Green slider - subtle green tint */
+.colour-slider-green::-webkit-slider-track {
+  background: linear-gradient(to right, #2D2D2D, rgba(46, 204, 113, 0.3));
+}
+
+.colour-slider-green::-moz-range-track {
+  background: linear-gradient(to right, #2D2D2D, rgba(46, 204, 113, 0.3));
+}
+
+/* Blue slider - subtle blue tint */
+.colour-slider-blue::-webkit-slider-track {
+  background: linear-gradient(to right, #2D2D2D, rgba(74, 144, 226, 0.3));
+}
+
+.colour-slider-blue::-moz-range-track {
+  background: linear-gradient(to right, #2D2D2D, rgba(74, 144, 226, 0.3));
+}
+
+/* Number Input for RGB values */
+.colour-value {
+  width: 50px;
+  height: var(--input-height);
+  padding: 0 6px;
+  font-size: var(--font-size-small);
+  text-align: center;
+}
+
+/* Hex Input */
+.colour-hex {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.colour-hex label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  min-width: 28px;
+}
+
+.colour-hex-input {
+  flex: 1;
+  height: var(--input-height);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   COMPACT MODE (for inspector)
+   ============================================ */
+
+.colour-picker-compact .colour-picker-palette {
+  gap: 3px;
+  padding: 3px;
+}
+
+.colour-picker-compact .colour-swatch {
+  min-height: 28px;
+}
+
+.colour-picker-compact .colour-editor {
+  padding: 6px;
+}

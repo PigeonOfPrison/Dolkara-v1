@@ -1,0 +1,53 @@
+@import './variables.css';
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+}
+
+.sidebar .icon-list {
+  display: flex;
+  flex-direction: column;
+  width: 50%; /* Icons take 50% horizontal space, leaving 25% on each side */
+  align-items: center;
+}
+
+.sidebar .sidebar-icon {
+  width: 100%; /* Full width of icon-list container */
+  height: var(--sidebar-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-normal);
+}
+
+.sidebar .sidebar-icon:hover {
+  color: var(--color-text-primary);
+}
+
+.sidebar .sidebar-icon span {
+  width: var(--sidebar-icon-size);
+  height: var(--sidebar-icon-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: color var(--transition-normal), filter var(--transition-normal);
+}
+
+.sidebar .sidebar-icon:hover span {
+  color: var(--color-text-secondary);
+  filter: drop-shadow(0 0 6px rgba(74, 144, 226, 0.2));
+}
+
+.sidebar .sidebar-icon.active {
+  border-left-color: var(--color-primary);
+}
+
+.sidebar .sidebar-icon.active span {
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 8px rgba(74, 144, 226, 0.4));
+}

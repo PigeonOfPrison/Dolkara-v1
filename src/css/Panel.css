@@ -1,0 +1,15 @@
+@import './variables.css';
+
+.panel {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-none);
+  color: var(--color-text-primary);
+}
+
+.panel-body {
+  width: 100%;
+  height: calc(100% - 32px); /* Subtract header height */
+  padding: var(--spacing-none);
+  overflow: auto;
+}

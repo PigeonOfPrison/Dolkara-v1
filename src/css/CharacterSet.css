@@ -1,0 +1,15 @@
+@import './variables.css';
+@import './SetCommon.css';
+
+/* ============================================
+   Character Set Panel - Layout Only
+   ============================================ */
+
+.characterset-container {
+  padding: var(--spacing-sm);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 80px)); /* Auto-fit 80px cards */
+  gap: 4px;
+  align-content: start;
+  justify-content: start;
+}

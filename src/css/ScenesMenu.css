@@ -1,0 +1,86 @@
+@import './variables.css';
+
+/* ============================================
+   Scenes Menu Panel
+   ============================================ */
+
+.scenes-menu-container {
+  padding: var(--spacing-sm);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjusted to fit 3 buttons per row */
+  gap: var(--spacing-sm);
+  align-content: start;
+  overflow: auto;
+  height: 100%;
+}
+
+/* Create New Scene Button */
+.scenes-menu-create-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  background: transparent;
+  border: 2px dashed var(--color-border-normal);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.scenes-menu-create-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.scenes-menu-create-btn:active {
+  transform: scale(0.98);
+}
+
+/* Scene Card */
+.scene-card {
+  width: 100%;
+  aspect-ratio: 1;
+  background: transparent;
+  border: 2px solid var(--color-border-normal);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.scene-card:hover {
+  border-color: var(--color-primary);
+}
+
+.scene-card.active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-hover);
+}
+
+.scene-card-name {
+  font-size: 12px;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.scene-card.active .scene-card-name {
+  font-weight: var(--font-weight-bold);
+}
+
+.scene-card-dimensions {
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
