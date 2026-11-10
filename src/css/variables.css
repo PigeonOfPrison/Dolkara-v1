@@ -1,0 +1,175 @@
+/* ============================================
+   Dolkaraa Editor - CSS Variables/Design Tokens
+   ============================================
+   Central source of truth for all colors, spacing, typography, and sizing.
+   Import this file first in index.css
+   ============================================ */
+
+:root {
+  /* ============================================
+     PRIMARY COLORS & INTERACTIONS
+     ============================================ */
+  
+  /* Action & Highlight Colors */
+  --color-primary: #4A90E2;
+  --color-primary-hover: #357ABD;
+  --color-primary-active: #2C5AA0;
+  
+  /* Status Colors */
+  --color-success: #2ECC71;
+  --color-warning: #F39C12;
+  --color-danger: #E74C3C;
+  
+  /* ============================================
+     TEXT COLORS
+     ============================================ */
+  
+  --color-text-primary: #ECEFF1;      /* Main text - almost white */
+  --color-text-secondary: #B0BEC5;    /* Secondary text - muted */
+  --color-text-muted: #78909C;        /* Tertiary text - very muted */
+  --color-text-disabled: #546E7A;     /* Disabled text */
+  
+  /* ============================================
+     BORDER & FOCUS COLORS
+     ============================================ */
+  
+  --color-border-focus: #4A90E2;      /* Same as primary for focus */
+  --color-border-normal: #37474F;     /* Dark border */
+  --color-border-hover: #455A64;      /* Slightly lighter border */
+  
+  /* ============================================
+     BACKGROUND COLORS - 6 PANELS
+     Subtle gradients with barely-perceptible color tinting
+     ============================================ */
+  
+  /* 1. SIDEBAR - Neutral anchor (pure black with subtle warmth) */
+  --bg-sidebar: linear-gradient(180deg, #1A1E23 0%, #1C1E26 100%);
+  
+  /* 2. TILE AREA - Purple whisper (black with hint of purple) */
+  --bg-tile-area: linear-gradient(135deg, #1E1F26 0%, #1D212A 100%);
+  
+  /* 3. SCENES MENU - Red whisper (black with hint of red) */
+  --bg-scenes-menu: linear-gradient(135deg, #1E2128 0%, #21201F 100%);
+  
+  /* 4. CANVAS AREA - Slightly warmer (focal point, nearly same as sidebar) */
+  --bg-canvas: linear-gradient(135deg, #252A31 0%, #2B2F38 100%);
+  
+  /* 5. CHARACTER AREA - Blue whisper (black with hint of blue) */
+  --bg-character-area: linear-gradient(135deg, #1E2128 0%, #1E212C 100%);
+  
+  /* 6. INSPECTOR AREA - Cyan whisper (black with hint of cyan) */
+  --bg-inspector: linear-gradient(90deg, #1F2937 0%, #212230 100%);
+  
+  /* Panel Headers - slightly darker than panels */
+  --bg-panel-header: rgba(0, 0, 0, 0.2);
+  
+  /* ============================================
+     GRID COLORS
+     ============================================ */
+  
+  --grid-color-major: #455A64;        /* Visible grid lines */
+  --grid-color-minor: #37474F;        /* Subtle dividers */
+  --grid-color-hover: #546E7A;        /* Highlight on hover */
+  
+  /* Canvas checkerboard (for transparency) */
+  --grid-checker-light: #2D3139;      /* Slightly lighter squares */
+  --grid-checker-dark: #23272E;       /* Slightly darker squares */
+  --grid-checker-opacity: 0.3;        /* Subtle pattern */
+  
+  /* Pixel editor grid */
+  --pixel-grid-color: #546E7A;        /* Slightly brighter for small grids */
+  --pixel-grid-thickness: 2px;        /* Visible borders between pixels */
+  
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  
+  /* Font Families */
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
+             'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  
+  /* Font Sizes - Base 13px for UI */
+  --font-size-h1: 18px;
+  --font-size-h2: 14px;
+  --font-size-body: 13px;
+  --font-size-small: 11px;
+  --font-size-mono: 12px;
+  
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  
+  /* ============================================
+     SPACING - Base Unit: 4px
+     ============================================ */
+  
+  --spacing-none: 0px;  /* No spacing */
+  --spacing-xs: 4px;    /* Tight spacing, element internals */
+  --spacing-sm: 8px;    /* Small gaps between elements */
+  --spacing-md: 12px;   /* Default component spacing */
+  --spacing-lg: 16px;   /* Panel section spacing */
+  --spacing-xl: 24px;   /* Major sections */
+  --spacing-xxl: 32px;  /* Large gaps, panel margins */
+  
+  /* ============================================
+     COMPONENT SIZING
+     ============================================ */
+  
+  /* Button Heights */
+  --btn-small-height: 28px;
+  --btn-medium-height: 36px;
+  --btn-large-height: 44px;
+  
+  /* Input Fields */
+  --input-height: 24px;
+  --input-padding: 0 6px;
+  
+  /* Icons */
+  --icon-small: 16px;
+  --icon-medium: 20px;
+  --icon-large: 24px;
+  --icon-xlarge: 32px;
+  
+  /* Sidebar */
+  --sidebar-width: 48px;
+  --sidebar-icon-size: 25px;
+  
+  /* Grid Items */
+  --tile-preview-size: 40px;
+  --character-preview-size: 60px;
+  
+  /* Grid Gaps */
+  --tile-grid-gap: 8px;
+  --character-grid-gap: 12px;
+  
+  /* ============================================
+     BORDER RADIUS
+     ============================================ */
+  
+  --radius-none: 0px;      /* Panels, canvas */
+  --radius-sm: 2px;        /* Buttons, inputs, small items */
+  --radius-md: 4px;        /* Modals, cards */
+  
+  /* ============================================
+     TRANSITIONS & ANIMATIONS
+     ============================================ */
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  
+  /* ============================================
+     SHADOWS
+     ============================================ */
+  
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.5);
+  
+  /* Focus/Hover glow (primary color) */
+  --shadow-focus: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  --shadow-hover: 0 0 6px rgba(74, 144, 226, 0.3);
+  --shadow-active: 0 0 8px rgba(74, 144, 226, 0.5);
+}

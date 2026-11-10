@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a2e;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .splash-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        .grid-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            --cell-size: 32px;
+            --grid-color: rgba(100, 100, 255, 0.15);
+            --grid-size: 5;
+            
+            width: calc(var(--cell-size) * var(--grid-size));
+            height: calc(var(--cell-size) * var(--grid-size));
+            background-image: 
+                linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+            background-size: var(--cell-size) var(--cell-size);
+            border: 1px solid var(--grid-color);
+            animation: expandGrid 1.5s ease-out 2s forwards;
+        }
+
+        @keyframes expandGrid {
+            0% {
+                width: calc(var(--cell-size) * 5);
+                height: calc(var(--cell-size) * 5);
+                opacity: 1;
+            }
+            100% {
+                width: 200vw;
+                height: 200vh;
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInScale 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .logo-letter {
+            font-size: 96px;
+            font-weight: 700;
+            color: #646cff;
+            text-shadow: 0 0 20px rgba(100, 108, 255, 0.5);
+        }
+
+        /* App name */
+        .app-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: fadeIn 0.6s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* Slogan */
+        .slogan {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 4px;
+            animation: fadeIn 0.6s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .slogan span {
+            color: #646cff;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Fade out content before transition */
+        .splash-container.fade-out {
+            animation: fadeOutContent 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeOutContent {
+            to {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+        }
+    </style>
+
+    <script>
+        // Wait for Tauri to be ready
+        function closeSplash() {
+            if (window.__TAURI__) {
+                // Tauri v2 API
+                window.__TAURI__.core.invoke('close_splashscreen')
+                    .catch(err => console.error('Error closing splash:', err));
+            } else {
+                // Fallback: retry after a short delay
+                setTimeout(closeSplash, 100);
+            }
+        }
+
+        // Start the transition sequence
+        setTimeout(() => {
+            document.getElementById('content').classList.add('fade-out');
+        }, 2500);
+
+        // Close splash after animation
+        setTimeout(() => {
+            closeSplash();
+        }, 3500);
+    </script>
+</head>
+<body>
+    <div class="grid-container"></div>
+    
+    <div class="splash-container" id="content">
+        <div class="logo">
+            <span class="logo-letter">D</span>
+        </div>
+        <div class="app-name">Dolkara</div>
+        <div class="slogan">
+            <span>Design.</span> Compile. <span>Play.</span>
+        </div>
+    </div>
+
+    <!-- <script>
+        // Signal Tauri when ready to show main window
+        setTimeout(() => {
+            document.getElementById('content').classList.add('fade-out');
+        }, 2500);
+
+        setTimeout(() => {
+            if (window.__TAURI__) {
+                window.__TAURI__.invoke('close_splashscreen');
+            }
+        }, 3000);
+    </script> -->
+</body>
+</html>

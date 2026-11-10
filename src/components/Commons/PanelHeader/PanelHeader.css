@@ -1,0 +1,55 @@
+@import '../../../css/variables.css';
+
+.panel-header {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-md);
+    border-bottom: 1px solid var(--color-border-normal);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    background: transparent;
+}
+
+/* Tab variant */
+.panel-header-tabs {
+    padding: 0;
+    gap: 0;
+}
+
+/* Tab variant - reset padding, tabs sit flush */
+.panel-header.panel-header-tabs {
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.panel-tab {
+    /* fit to content width, not stretch */
+    flex: 0 0 auto;
+    height: 32px;
+    padding: 0 var(--spacing-lg);
+    border-right: 1px solid var(--color-border-normal);
+    border-bottom: 2px solid transparent; /* reserve space to prevent layout shift */
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.panel-tab:hover {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-secondary);
+}
+
+.panel-tab.active {
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.panel-tab:last-child {
+    border-right: none;
+}

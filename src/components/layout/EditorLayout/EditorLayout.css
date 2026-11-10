@@ -1,0 +1,140 @@
+@import './../../../css/variables.css';
+
+/* ============================================
+   Editor Layout - Main Grid
+   ============================================ */
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(200px, 300px) 1fr 1fr 1fr 300px;
+  grid-template-rows: 1fr 1fr 1fr 0.8fr 1.5fr;
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  background: var(--bg-canvas);
+}
+
+/* ============================================
+   Grid Areas
+   ============================================ */
+
+/* Sidebar - Left column, full height */
+.sidebar {
+  grid-column: 1 / 2;
+  grid-row: 1 / 6;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--color-border-normal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Tile Area - Second column, top 3 rows */
+.tile-area {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  background: var(--bg-tile-area);
+  border-right: 1px solid var(--color-border-normal);
+  border-bottom: 1px solid var(--color-border-normal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Scenes Menu - Second column, bottom 2 rows */
+.scenes-menu {
+  grid-column: 2 / 3;
+  grid-row: 4 / 6;
+  background: var(--bg-scenes-menu);
+  border-right: 1px solid var(--color-border-normal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Canvas Area - Middle 3 columns, top 4 rows */
+.canvas-area {
+  grid-column: 3 / 6;
+  grid-row: 1 / 5;
+  background: var(--bg-canvas);
+  border-right: 1px solid var(--color-border-normal);
+  border-bottom: 1px solid var(--color-border-normal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Character Area - Middle 3 columns, bottom row */
+.character-area {
+  grid-column: 3 / 6;
+  grid-row: 5 / 6;
+  background: var(--bg-character-area);
+  border-right: 1px solid var(--color-border-normal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Inspector Area - Right column, full height */
+.inspector-area {
+  grid-column: 6 / 7;
+  grid-row: 1 / 6;
+  background: var(--bg-inspector);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ============================================
+   Panel Common Styles
+   ============================================ */
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-normal);
+  background: var(--bg-panel-header);
+  flex-shrink: 0;
+}
+
+.panel-header__title {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.panel-body {
+  flex: 1;
+  overflow: auto;
+  padding: var(--spacing-sm);
+}
+
+/* ============================================
+   Placeholder Content (for development preview)
+   ============================================ */
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  gap: var(--spacing-sm);
+}
+
+.placeholder__icon {
+  font-size: 32px;
+  opacity: 0.5;
+}
+
+.placeholder__text {
+  opacity: 0.7;
+}
